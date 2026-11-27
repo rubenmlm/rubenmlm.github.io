@@ -1,0 +1,62 @@
+@use 'sass:map';
+
+// Mezcla del ejemplo 
+
+@mixin button($bg-color, $text-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+// Mezcla para centrar elementos con Flexbox
+@mixin flex-center($direction: row, $gap: 0) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+    gap: $gap;
+}
+
+// Mezcla para aplicar la rejilla principal de tu prototipo
+@mixin grid-container($columns: 12, $gap: 24px) {
+    display: grid;
+    grid-template-columns: repeat($columns, 1fr);
+    column-gap: $gap;
+}
+
+
+
+// Mapa de puntos de interrupción
+$breakpoints: (
+    "small": (
+        max-width: 599px,
+    ),
+    "medium": (
+        min-width: 600px,
+        max-width: 1199px,
+    ),
+    "large": (
+        min-width: 1200px,
+    ),
+);
+
+// Mixin gestor de consultas de medios
+@mixin respond-to($breakpoint) {
+    $raw-query: map.get($breakpoints, $breakpoint);
+
+    @if $raw-query {
+    $query: "screen";
+    @each $prop, $value in $raw-query {
+    $query: "#{$query} and (#{$prop}: #{$value})";    }
+
+    @media #{$query} {
+    @content;
+    }
+    } @else {
+    @error 'No value found for `#{$breakpoint}`. '
+        + 'Please make sure it is defined in `$breakpoints` map.';
+    }
+}

@@ -1,0 +1,93 @@
+@use "globals" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $Secundarios-SOFT-GREY;
+  color: $Primarios-BLACK;
+  font-family: $FontFamily-Paragraph;
+  font-size: $FontSize-Paragraph;
+  line-height: $LineHeight-Paragraph;
+}
+
+.container {
+  width: 100%;
+  max-width: calc(($Number-Columns * $Columns-Width) + (($Number-Columns - 1) * $ColumnGap));
+  margin: 0 auto;
+  padding: 0 $md;
+}
+
+.catalog-section {
+  padding: $lg 0 64px;
+}
+
+.catalog-title {
+  font-family: $FontFamily-Encabezado1;
+  font-size: $FontSize-H2;
+  font-weight: $FontWeight-Bold;
+  line-height: $LineHeight-H2;
+  text-transform: uppercase;
+  margin-bottom: $md;
+}
+
+.models-grid {
+  @include grid-container(3, $ColumnGap);
+  row-gap: $ColumnGap;
+
+  @include respond-to("medium") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to("small") {
+    grid-template-columns: 1fr;
+  }
+}
+
+.model-card {
+  background-color: $Secundarios-WHITE;
+  padding: $md;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__image {
+    width: 100%;
+    height: 230px;
+    object-fit: contain;
+    margin-bottom: $sm;
+  }
+
+  &__info {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+
+    @include respond-to("small") {
+      flex-direction: column;
+      gap: 2px;
+    }
+  }
+
+  &__title {
+    font-family: $FontFamily-Encabezado-2;
+    font-size: $FontSize-Logo;
+    font-weight: $FontWeight-Bold;
+    line-height: 1.1;
+    color: $Primarios-BLACK;
+    text-transform: uppercase;
+  }
+
+  &__price {
+    font-family: $FontFamily-Paragraph;
+    font-size: $FontSize-MenuItem;
+    font-weight: $FontWeight-Bold;
+    color: $Primarios-AZUL;
+  }
+}

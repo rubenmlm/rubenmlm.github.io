@@ -1,0 +1,100 @@
+@use "globals" as *;
+
+.site-header {
+  background-color: $Primarios-BLACK;
+  color: $Secundarios-WHITE;
+  padding: $md 0;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $md;
+
+    @include respond-to("small") {
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: $Secundarios-WHITE;
+
+  &__badge {
+    @include flex-center;
+    width: 30px;
+    height: 34px;
+    background-color: $Primarios-AZUL;
+    font-family: $FontFamily-Encabezado1;
+    font-size: $FontSize-Logo;
+    font-weight: $FontWeight-Bold;
+    line-height: 1;
+  }
+
+  &__text {
+    font-family: $FontFamily-Encabezado1;
+    font-size: $FontSize-Logo;
+    font-weight: $FontWeight-Bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: $lg;
+
+  @include respond-to("small") {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    gap: $sm;
+    padding-top: 12px;
+    border-top: 1px solid rgba($Secundarios-GREY, 0.15);
+  }
+
+  &__link {
+    font-family: $FontFamily-Paragraph;
+    font-size: $FontSize-MenuItem;
+    font-weight: $FontWeight-Medium;
+    color: $Secundarios-GREY;
+    text-decoration: none;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      color: $Secundarios-WHITE;
+    }
+
+    &--active {
+      color: $Secundarios-WHITE;
+      border-bottom-color: $Primarios-AZUL;
+    }
+  }
+}
+
+.btn-configura {
+  @include button($Primarios-AZUL, $Secundarios-WHITE);
+  font-family: $FontFamily-Paragraph;
+  font-size: $FontSize-MenuItem;
+  font-weight: $FontWeight-Bold;
+  padding: 12px 20px;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  @include respond-to("small") {
+    order: 2;
+    padding: 10px 14px;
+  }
+}

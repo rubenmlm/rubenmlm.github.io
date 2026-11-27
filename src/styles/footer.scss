@@ -1,0 +1,107 @@
+@use "globals" as *;
+
+.site-footer {
+  background-color: $Primarios-BLACK;
+  color: $Secundarios-WHITE;
+  padding: 48px 0 $md;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: $lg;
+    padding-bottom: 48px;
+
+    @include respond-to("small") {
+      flex-direction: column;
+      gap: 32px;
+      padding-bottom: 32px;
+    }
+  }
+
+  &__brand {
+    max-width: 280px;
+  }
+
+  &__slogan {
+    margin-top: $md;
+    font-family: $FontFamily-Encabezado1;
+    font-size: $FontSize-Logo;
+    font-weight: $FontWeight-Bold;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: $Secundarios-WHITE;
+  }
+
+  &__columns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(110px, 1fr));
+    gap: $lg;
+
+    @include respond-to("small") {
+      width: 100%;
+      grid-template-columns: repeat(3, 1fr);
+      gap: $sm;
+    }
+  }
+
+  &__col-title {
+    font-family: $FontFamily-Paragraph;
+    font-size: 12px;
+    font-weight: $FontWeight-Bold;
+    text-transform: uppercase;
+    color: $Primarios-AZUL;
+    margin-bottom: 12px;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__link {
+    font-family: $FontFamily-Paragraph;
+    font-size: $FontSize-MenuItem;
+    font-weight: $FontWeight-Regular;
+    color: $Secundarios-GREY;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $Secundarios-WHITE;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $sm;
+    padding-top: $md;
+    font-size: 11px;
+    color: $Secundarios-GREY;
+    text-transform: uppercase;
+
+    @include respond-to("small") {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  }
+
+  &__legal {
+    display: flex;
+    gap: 8px;
+
+    a {
+      color: $Secundarios-GREY;
+      text-decoration: none;
+
+      &:hover {
+        color: $Secundarios-WHITE;
+      }
+    }
+  }
+}
